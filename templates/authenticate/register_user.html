@@ -1,0 +1,33 @@
+<html>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/holiday.css@0.9.8" />
+    {% block title %}
+
+    {% if form.errors %}
+
+    <p>There was an error with your form...</p>
+
+    {% endif %} 
+
+    <head>
+        <h1>Dental Photographs</h1>
+        <h2>Register</h2>
+    </head>
+    {% endblock %}
+    <body>
+        {% block form %}
+        <form action="{% url 'register_user' %}" method="POST">
+            {% csrf_token %}
+
+            {{ form.as_p }}<p>
+
+            <input type="submit" value="הירשם">
+        </form>
+        {% endblock %}
+    </body>
+    <style>
+        body {
+            background-color: rgb(199, 211, 29); 
+            background-size: cover;
+        }
+        </style>
+</html>

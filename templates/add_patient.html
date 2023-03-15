@@ -1,0 +1,18 @@
+<html>
+    {% extends "base.html" %}
+    {% block title %}
+    <head>
+        <h2>הוספת מטופל</h2>
+    </head>
+    {% endblock %}
+    <body>
+        {% block form %}
+        <form class="form-label form-control" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}<p>
+            <input class="btn btn-outline-success" type="submit" value="שמור">
+        </form>
+        {% endblock %}
+    </body>
+</html>
+

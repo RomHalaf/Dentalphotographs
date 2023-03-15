@@ -1,0 +1,72 @@
+<html>
+    {% extends "base.html" %}
+    {% block title %}
+    <head>
+    <h1>דו"חות</h1>
+    <form action='/dental_photographs/reports2/' method="GET">
+        <input name='a' type='search' placeholder="סניף">
+        <input name='b' type='search' placeholder="תאריך">
+        <input name='c' type='search' placeholder="רופא">
+        <input name='d' type='search' placeholder="צורת תשלום">
+        <input name='e' type='search' placeholder="דרך">
+        <input name='f' type='search' placeholder="צלם">
+        <input type="submit" value="חפש">
+    </form>
+    </head>
+    {% endblock %}  
+    <body>
+        {% block table %} 
+        <table style="width:130%">
+            <table class="table thead-dark table-bordered table-secondary">
+            
+            <tr>
+                <th>סניף</th>
+                <th>תאריך</th>
+                <th>שם פרטי</th>
+                <th>שם משפחה</th>
+                <th>ת.ז.</th>
+                <th>רופא</th>
+                <th>סוג צילום</th>
+                <th>מספר עסקה</th>
+                <th>צורת תשלום</th>
+                <th>אשראי</th>
+                <th>מזומן</th>
+                <th>החזר מהביטוח</th>
+                <th>מספר אסמכתא</th>
+                <th>מספר חשבונית</th>
+                <th>דרך</th>
+                <th>צלם</th>
+                <th>מחיקה</th>
+                <th>פרטים</th>
+            </tr>
+            {% for p in search_reports %}
+            <tr>
+                <td>{{ p.branch }}</td>
+                <td>{{ p.date }}</td>
+                <td>{{ p.first_name }}</td>
+                <td>{{ p.last_name }}</td>
+                <td>{{ p.id_number }}</td>
+                <td>{{ p.doctor }}</td>
+                <td>{{ p.photo_type }}</td>
+                <td>{{ p.deal_number }}</td>
+                <td>{{ p.price_type }}</td>
+                <td>{{ p.credit }}</td>
+                <td>{{ p.cash }}</td>
+                <td>{{ p.reimbursement_from_insurance }}</td>
+                <td>{{ p.reference_number }}</td>
+                <td>{{ p.invoicing_number }}</td>
+                <td>{{ p.way }}</td>
+                <td>{{ p.photographer_name }}</td>
+                <td><form method="POST" action='/dental_photographs/remove/'>
+                    <input type='hidden' name="id" value="{{p.id}}">
+                    <input type='hidden' name="first_name" value="{{p.first_name}}">
+                    <input class="btn btn-outline-danger" type="submit" value="מחק">
+                </form>
+                </td>
+                <td><a href="/dental_photographs/patient_view/?id={{p.id}}">🙂</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+    {% endblock %}
+</html>

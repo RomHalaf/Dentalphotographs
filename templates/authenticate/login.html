@@ -1,0 +1,37 @@
+<html>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/holiday.css@0.9.8" />
+    {% block title %}
+    <head>
+        <h1>Dental Photographs</h1>
+        <h2>Login</h2>
+    </head>
+    {% endblock %}
+    <body>
+        {% block form %}
+        <form method="POST">
+            {% csrf_token %}
+        <form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+
+        {{ form.as_p }}<p>
+            <input type="submit" value="כניסה">
+        </form>
+        {% endblock %}
+    </body>
+    <h1> If you want to register, click here ↓</h1>
+
+    <a type="button" class="btn btn-light" href="/dental_photographs/register_user">Register</a>
+    <style>
+        body {
+            background-color: rgb(199, 211, 29); 
+            background-size: cover;
+        }
+        </style>
+</html>
